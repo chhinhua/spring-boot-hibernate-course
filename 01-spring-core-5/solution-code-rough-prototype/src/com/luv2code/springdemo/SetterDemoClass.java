@@ -6,7 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @author Chhin_Hua - 08/02
  **/
 
-public class HelloSpringApp {
+public class SetterDemoClass {
     public static void main(String[] args) {
 
         // load the spring configuration file
@@ -14,16 +14,16 @@ public class HelloSpringApp {
                 new ClassPathXmlApplicationContext("applicationContext.xml");
 
         // retrieve bean from spring container
-        Coach theCoach = context.getBean("myCoach", Coach.class);
-        Coach theCoach2 = context.getBean("myCoach2", Coach.class);
+        CricketCoach theCoach = context.getBean("myCricketCoach", CricketCoach.class);
 
         // call methods on the bean
         System.out.println(theCoach.getDailyWorkout());
-        System.out.println(theCoach2.getDailyWorkout());
-
-        // call methods use DI
         System.out.println(theCoach.getDailyFortune());
-        System.out.println(theCoach2.getDailyFortune());
+
+        // call our new methods to get the literal values
+        System.out.println(theCoach.getEmailAddress());
+        System.out.println(theCoach.getTeam());
+
         // close the context
         context.close();
     }
