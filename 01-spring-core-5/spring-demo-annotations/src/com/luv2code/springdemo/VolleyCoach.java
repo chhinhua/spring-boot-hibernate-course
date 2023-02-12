@@ -12,4 +12,9 @@ public class VolleyCoach implements Coach {
     public String getDailyWorkout() {
         return "For class Volley Coach";
     }
+
+    @Override
+    public String getDailyFortune() {
+        return "For class Volley by fortune";
+    }
 }
