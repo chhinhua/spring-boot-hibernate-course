@@ -26,8 +26,7 @@
     </bean>
 
     <bean id="myGolfCoach"
-          class="com.luv2code.springdemo.GolfCoach"
-          scope="singleton">
+          class="com.luv2code.springdemo.GolfCoach">
 
         <!-- set up constructor injection -->
         <constructor-arg ref="myFortuneService" />
