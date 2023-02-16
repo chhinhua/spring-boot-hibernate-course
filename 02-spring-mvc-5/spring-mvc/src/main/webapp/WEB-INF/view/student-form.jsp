@@ -4,7 +4,7 @@
   Created by EricNguyen - 2/15/2023
 --%>
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <title>Student Register Form</title>
