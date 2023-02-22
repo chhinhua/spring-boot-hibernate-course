@@ -6,12 +6,17 @@ mvnw
 mvnw.cmd
 hibernate-tutoral.iml
 ### IntelliJ IDEA ###
-.idea/
+
+.idea/modules.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/libraries/
 *.iws
 *.iml
 *.ipr
 01-spring-core-5/
 02-spring-mvc-5/
+.idea/
 
 ### Eclipse ###
 .apt_generated
@@ -36,4 +41,4 @@ build/
 .vscode/
 
 ### Mac OS ###
-.DS_Store
+

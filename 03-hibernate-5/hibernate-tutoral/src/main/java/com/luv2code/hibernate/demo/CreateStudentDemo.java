@@ -39,6 +39,7 @@ public class CreateStudentDemo {
             session.getTransaction().commit();
             System.out.println("done~!");
         } finally {
+            session.close();
             factory.close();
         }
 
