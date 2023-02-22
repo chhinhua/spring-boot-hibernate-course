@@ -13,6 +13,8 @@ hibernate-tutoral.iml
 *.iws
 *.iml
 *.ipr
+01-spring-core-5/
+02-spring-mvc-5/
 
 ### Eclipse ###
 .apt_generated
