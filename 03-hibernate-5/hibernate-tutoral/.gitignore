@@ -20,7 +20,7 @@ hibernate-tutoral.iml
 
 ### Eclipse ###
 .apt_generated
-.classpath
+.cqlasspath
 .factorypath
 .project
 .settings
