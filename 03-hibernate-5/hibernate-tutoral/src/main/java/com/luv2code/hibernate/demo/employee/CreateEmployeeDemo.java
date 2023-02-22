@@ -1,43 +1,42 @@
-package com.luv2code.hibernate.demo;
+package com.luv2code.hibernate.demo.employee;
 
+import com.luv2code.hibernate.demo.entity.Employee;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.luv2code.hibernate.demo.entity.Student;
-
 /**
- * @author Chhin_Hua - 21/02
+ * @author Chhin_Hua - 22/02
  **/
 
-public class CreateStudentDemo {
-
+public class CreateEmployeeDemo {
     public static void main(String[] args) {
 
         // create session factory
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
-                .addAnnotatedClass(Student.class)
+                .addAnnotatedClass(Employee.class)
                 .buildSessionFactory();
 
         // create session
         Session session = factory.getCurrentSession();
 
         try {
-            // create a student object
-            System.out.println("Create new student object...");
-            Student student = new Student("Paul", "Wall", "paul@gmail.com");
+            // create a employee object
+            System.out.println("Create new employee object...");
+            Employee employee = new Employee("Paul", "Wall", "FPT Software");
 
             // start a transaction
             session.beginTransaction();
 
-            // save the student object
-            System.out.println("Save student...");
-            session.save(student);
+            // save the employee object
+            System.out.println("Save employee...");
+            session.save(employee);
 
             // commit transaction
             session.getTransaction().commit();
             System.out.println("done~!");
+
         } finally {
             factory.close();
         }
