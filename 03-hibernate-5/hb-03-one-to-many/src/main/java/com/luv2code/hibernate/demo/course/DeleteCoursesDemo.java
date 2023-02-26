@@ -1,5 +1,7 @@
-package com.luv2code.hibernate.demo;
 
+package com.luv2code.hibernate.demo.course;
+
+import com.luv2code.hibernate.demo.entity.Course;
 import com.luv2code.hibernate.demo.entity.Instructor;
 import com.luv2code.hibernate.demo.entity.InstructorDetail;
 import org.hibernate.Session;
@@ -10,7 +12,7 @@ import org.hibernate.cfg.Configuration;
  * @author Chhin_Hua - 21/02
  **/
 
-public class DeleteInstructorDetailDemo {
+public class DeleteCoursesDemo {
 
     public static void main(String[] args) {
 
@@ -19,46 +21,34 @@ public class DeleteInstructorDetailDemo {
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Instructor.class)
                 .addAnnotatedClass(InstructorDetail.class)
+                .addAnnotatedClass(Course.class)
                 .buildSessionFactory();
 
         // create session
         Session session = factory.getCurrentSession();
 
         try {
-
             // start a transaction
             session.beginTransaction();
 
-            // get the instructor detail object
-            int theId = 3;
-            InstructorDetail tempInstructorDetail =
-                    session.get(InstructorDetail.class, theId);
+            // get a course
+            int theId = 10;
+            Course tempCourse = session.get(Course.class, theId);
 
-            // print the instructor detail
-            System.out.println("Found instructor detail: " + tempInstructorDetail);
-
-            // now let delete instructor detail
-            // remove associated object reference
-
-
-            if (tempInstructorDetail != null) {
-                System.out.println("deleting instructor detail: " + tempInstructorDetail);
-                // break bi-directional link
-                tempInstructorDetail.getInstructor().setInstructorDetail(null);
-                session.delete(tempInstructorDetail);
-            }
+            // delete course
+            System.out.println("Deleting course: " + tempCourse);
+            session.delete(tempCourse);
 
             // commit transaction
             session.getTransaction().commit();
 
             System.out.println("done~!");
 
-        } catch (Exception e) {
-            e.printStackTrace();
         } finally {
-            // handle connection leak issue
+            // add clean up code
             session.close();
             factory.close();
         }
+
     }
 }

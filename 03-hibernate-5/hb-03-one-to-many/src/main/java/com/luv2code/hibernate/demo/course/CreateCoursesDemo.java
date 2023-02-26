@@ -1,4 +1,4 @@
-package com.luv2code.hibernate.demo;
+package com.luv2code.hibernate.demo.course;
 
 import com.luv2code.hibernate.demo.entity.Course;
 import com.luv2code.hibernate.demo.entity.Instructor;
@@ -35,8 +35,8 @@ public class CreateCoursesDemo {
             Instructor tempInstructor = session.get(Instructor.class, theId);
 
             // create some courses
-            Course tempCourse1 = new Course("The Guitar");
-            Course tempCourse2 = new Course("The Football");
+            Course tempCourse1 = new Course("The Volleyball");
+            Course tempCourse2 = new Course("The King");
 
             // add courses to instructor
             tempInstructor.add(tempCourse1);
