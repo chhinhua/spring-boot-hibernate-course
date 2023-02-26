@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f225f38f-e5fd-4202-8b82-40dfd6fb776b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/01-spring-core-5/solution-code-rough-prototype/src/beanScope-applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/01-spring-core-5/solution-code-rough-prototype/src/beanScope-applicationContext.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-spring-core-5/spring-demo-annotations/.idea/libraries/Spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/01-spring-core-5/spring-demo-annotations/.idea/libraries/Spring.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-spring-core-5/spring-demo-annotations/out/production/spring-demo-annotations/com/luv2code/springdemo/TennisCoach.class" beforeDir="false" afterPath="$PROJECT_DIR$/01-spring-core-5/spring-demo-annotations/out/production/spring-demo-annotations/com/luv2code/springdemo/TennisCoach.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-spring-core-5/spring-demo-annotations/src/com/luv2code/springdemo/TennisCoach.java" beforeDir="false" afterPath="$PROJECT_DIR$/01-spring-core-5/spring-demo-annotations/src/com/luv2code/springdemo/TennisCoach.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-course.iml" beforeDir="false" afterPath="$PROJECT_DIR$/my-course.iml" afterDir="false" />
-    </list>
+    <list default="true" id="f225f38f-e5fd-4202-8b82-40dfd6fb776b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -176,6 +170,7 @@
       <workItem from="1676137289919" duration="14000" />
       <workItem from="1676138743103" duration="48000" />
       <workItem from="1676299654251" duration="113000" />
+      <workItem from="1677178278588" duration="48000" />
     </task>
     <servers />
   </component>
