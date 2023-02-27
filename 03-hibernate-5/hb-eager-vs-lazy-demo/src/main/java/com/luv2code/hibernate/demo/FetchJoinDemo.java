@@ -1,4 +1,3 @@
-
 package com.luv2code.hibernate.demo;
 
 import com.luv2code.hibernate.demo.entity.Course;
@@ -7,12 +6,13 @@ import com.luv2code.hibernate.demo.entity.InstructorDetail;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 /**
  * @author Chhin_Hua - 21/02
  **/
 
-public class DeleteCoursesDemo {
+public class FetchJoinDemo {
 
     public static void main(String[] args) {
 
@@ -31,18 +31,36 @@ public class DeleteCoursesDemo {
             // start a transaction
             session.beginTransaction();
 
-            // get a course
-            int theId = 10;
-            Course tempCourse = session.get(Course.class, theId);
+            // option 2: hibernate query with HQL
 
-            // delete course
-            System.out.println("Deleting course: " + tempCourse);
-            session.delete(tempCourse);
+            // get the instructor from db
+            int theId = 1;
+
+            Query<Instructor> query = session.createQuery("select i from Instructor i " +
+                            "join fetch i.courses " +
+                            "where i.id=:theInstructorId",
+                            Instructor.class);
+
+            // set parameter on query
+            query.setParameter("theInstructorId", theId);
+
+            // execute query and get instructor
+            Instructor tempInstructor = query.getSingleResult();
+
+            System.out.println("luv2code: Instructor: " + tempInstructor);
 
             // commit transaction
             session.getTransaction().commit();
 
-            System.out.println("done~!");
+            // close the session
+            session.close();
+
+            System.out.println("\nluv2code: the session is now closed!\n");
+
+            // get course for the instructor
+            System.out.println("luv2code: Courses: " + tempInstructor.getCourses());
+
+            System.out.println("luv2code: done~!");
 
         } finally {
             // add clean up code

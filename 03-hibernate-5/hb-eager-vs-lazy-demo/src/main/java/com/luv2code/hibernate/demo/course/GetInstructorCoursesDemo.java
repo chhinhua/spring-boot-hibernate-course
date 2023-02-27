@@ -1,4 +1,5 @@
-package com.luv2code.hibernate.demo;
+
+package com.luv2code.hibernate.demo.course;
 
 import com.luv2code.hibernate.demo.entity.Course;
 import com.luv2code.hibernate.demo.entity.Instructor;
@@ -11,7 +12,7 @@ import org.hibernate.cfg.Configuration;
  * @author Chhin_Hua - 21/02
  **/
 
-public class CreateCoursesDemo {
+public class GetInstructorCoursesDemo {
 
     public static void main(String[] args) {
 
@@ -33,18 +34,10 @@ public class CreateCoursesDemo {
             // get the instructor from db
             int theId = 1;
             Instructor tempInstructor = session.get(Instructor.class, theId);
+            System.out.println("Instructor: " + tempInstructor);
 
-            // create some courses
-            Course tempCourse1 = new Course("The Guitar");
-            Course tempCourse2 = new Course("The Football");
-
-            // add courses to instructor
-            tempInstructor.add(tempCourse1);
-            tempInstructor.add(tempCourse2);
-
-            // save the courses
-            session.save(tempCourse1);
-            session.save(tempCourse2);
+            // get courses for instructor
+            System.out.println("Courses: " + tempInstructor.getCourses());
 
             // commit transaction
             session.getTransaction().commit();

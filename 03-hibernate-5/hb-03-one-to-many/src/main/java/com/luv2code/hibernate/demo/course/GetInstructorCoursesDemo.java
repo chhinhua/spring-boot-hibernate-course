@@ -1,5 +1,5 @@
 
-package com.luv2code.hibernate.demo;
+package com.luv2code.hibernate.demo.course;
 
 import com.luv2code.hibernate.demo.entity.Course;
 import com.luv2code.hibernate.demo.entity.Instructor;

@@ -10,7 +10,7 @@ import org.hibernate.cfg.Configuration;
  * @author Chhin_Hua - 21/02
  **/
 
-public class DeleteInstructorDetailDemo {
+public class DeleteDemo {
 
     public static void main(String[] args) {
 
@@ -29,23 +29,19 @@ public class DeleteInstructorDetailDemo {
             // start a transaction
             session.beginTransaction();
 
-            // get the instructor detail object
-            int theId = 3;
-            InstructorDetail tempInstructorDetail =
-                    session.get(InstructorDetail.class, theId);
+            // get instructor by primaryKey / id
+            int theId = 1;
+            Instructor tempInstructor = session.get(Instructor.class, theId);
 
-            // print the instructor detail
-            System.out.println("Found instructor detail: " + tempInstructorDetail);
+            System.out.println("Found instructor: " + tempInstructor);
 
-            // now let delete instructor detail
-            // remove associated object reference
+            // delete instructor
 
+            if (tempInstructor != null) {
+                System.out.println("Deleting: " + tempInstructor);
 
-            if (tempInstructorDetail != null) {
-                System.out.println("deleting instructor detail: " + tempInstructorDetail);
-                // break bi-directional link
-                tempInstructorDetail.getInstructor().setInstructorDetail(null);
-                session.delete(tempInstructorDetail);
+                // NOTE: also delete associate "details" object
+                session.delete(tempInstructor);
             }
 
             // commit transaction
@@ -53,11 +49,7 @@ public class DeleteInstructorDetailDemo {
 
             System.out.println("done~!");
 
-        } catch (Exception e) {
-            e.printStackTrace();
         } finally {
-            // handle connection leak issue
-            session.close();
             factory.close();
         }
     }
