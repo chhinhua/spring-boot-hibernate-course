@@ -5,6 +5,7 @@ target/
 mvnw
 mvnw.cmd
 hibernate-tutoral.iml
+03-hibernate-5/
 ### IntelliJ IDEA ###
 .idea/artifacts
 .idea/compiler.xml
