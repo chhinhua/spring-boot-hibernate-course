@@ -6,6 +6,7 @@ mvnw
 mvnw.cmd
 hibernate-tutoral.iml
 03-hibernate-5/
+04-spring-mvc-crud-5/
 ### IntelliJ IDEA ###
 .idea/artifacts
 .idea/compiler.xml
