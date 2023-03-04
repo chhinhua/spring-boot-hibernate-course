@@ -16,12 +16,27 @@ import java.util.List;
 public class CustomerServiceImpl implements CustomerService {
 
     // need to inject customer dao
-    @Autowired
-    private CustomerDAO customerDAO;
+    private final CustomerDAO customerDAO;
+
+    public CustomerServiceImpl(CustomerDAO customerDAO) {
+        this.customerDAO = customerDAO;
+    }
 
     @Override
     @Transactional
     public List<Customer> getCustomers() {
         return customerDAO.getCustomers();
+    }
+
+    @Override
+    @Transactional
+    public void saveCustomer(Customer customer) {
+        customerDAO.saveCustomer(customer);
+    }
+
+    @Override
+    @Transactional
+    public Customer getCustomers(int id) {
+        return customerDAO.getCustomers(id);
     }
 }
