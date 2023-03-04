@@ -10,9 +10,13 @@ import java.util.List;
 
 public interface CustomerDAO {
 
-    List<Customer> getCustomers();
+    List<Customer> getCustomers(int theSortField);
 
     void saveCustomer(Customer customer);
 
-    Customer getCustomers(int id);
+    Customer getCustomer(int id);
+
+    void deleteCustomer(int id);
+
+    List<Customer> searchCustomers(String theSearchName);
 }

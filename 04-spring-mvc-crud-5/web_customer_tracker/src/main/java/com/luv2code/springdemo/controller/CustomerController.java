@@ -3,6 +3,7 @@ package com.luv2code.springdemo.controller;
 import com.luv2code.springdemo.dao.CustomerDAO;
 import com.luv2code.springdemo.entity.Customer;
 import com.luv2code.springdemo.service.CustomerService;
+import com.luv2code.springdemo.utils.SortUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,20 +24,35 @@ import java.util.List;
 public class CustomerController {
 
     // need to inject customer service
-    @Autowired
-    private CustomerService customerService;
+    private final CustomerService customerService;
+
+    public CustomerController(CustomerService customerService) {
+        this.customerService = customerService;
+    }
 
     @GetMapping("/list")
-    public String listCustomers(Model model) {
+    public String listCustomers(Model theModel,
+                                @RequestParam(required=false) String sort) {
 
         // get customers from the service
-        List<Customer> theCustomers = customerService.getCustomers();
+        List<Customer> theCustomers = null;
+
+        // check for sort field
+        if (sort != null) {
+            int theSortField = Integer.parseInt(sort);
+            theCustomers = customerService.getCustomers(theSortField);
+        }
+        else {
+            // no sort field provided ... default to sorting by last name
+            theCustomers = customerService.getCustomers(SortUtils.LAST_NAME);
+        }
 
         // add the customers to the model
-        model.addAttribute("customers", theCustomers);
+        theModel.addAttribute("customers", theCustomers);
 
         return "list-customers";
     }
+
 
     @GetMapping("/showFormForAdd")
     public  String showFormForAdd(Model model) {
@@ -62,13 +78,32 @@ public class CustomerController {
                                     Model model) {
 
         // get the customer form database
-        Customer customer = customerService.getCustomers(id);
+        Customer customer = customerService.getCustomer(id);
 
         // set customer as a model attribute to pre-populate the form
         model.addAttribute("customer", customer);
 
         // send over to our form
         return "customer-form";
+    }
+
+    @GetMapping("/delete")
+    public String deleteCustomer(@RequestParam("customerId") int id) {
+
+        // delete the customer
+        customerService.deleteCustomer(id);
+
+        return "redirect:/list";
+    }
+    @GetMapping("/search")
+    public String searchCustomers(@RequestParam("theSearchName") String theSearchName,
+                                  Model theModel) {
+        // search customers from the service
+        List<Customer> theCustomers = customerService.searchCustomers(theSearchName);
+
+        // add the customers to the model
+        theModel.addAttribute("customers", theCustomers);
+        return "list-customers";
     }
 
 }
